@@ -1,5 +1,5 @@
-const EthSwap = artifacts.require("EthSwap");
-const Token = artifacts.require("Token");
+const EthSwap = artifacts.require("./../src/contracts/EthSwap.sol");
+const Token = artifacts.require("../src/contracts/Token.sol");
 
 module.exports = async function(deployer) {
   await deployer.deploy(Token);

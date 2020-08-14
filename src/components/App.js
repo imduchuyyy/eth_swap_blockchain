@@ -24,15 +24,18 @@ const App = () => {
 
     const idNetwork = await web3.eth.net.getId() || ''
     // load Token contract
-    const { address: tokenAddress } = Token.networks[idNetwork] || ''
-    const tokenContract = new web3.eth.Contract(Token.abi, tokenAddress)
+    const { address } = Token.networks["5777"] || ''
+    console.log(address)
+
+    const tokenContract = new web3.eth.Contract(Token.abi, "0xA0f821A7d914f9b13042E2460759B907AEC70693")
     const tokenBalance = await tokenContract.methods.balanceOf(accounts[0]).call()
     token.current = tokenContract
     setTokenBalance(tokenBalance.toString())
 
     // load EtherSwap contract
     const { address: etherSwapAddress } = EthSwap.networks[idNetwork] || ''
-    const etherSwapContract = new web3.eth.Contract(EthSwap.abi, etherSwapAddress)
+
+    const etherSwapContract = new web3.eth.Contract(EthSwap.abi, "0xB2Cfa2406c1d4B07A0A177D9B25747F37011a470")
     etherSwap.current = etherSwapContract
   })
 
@@ -83,7 +86,7 @@ const App = () => {
   useEffect(() => {
     loadWeb3()
     loadBlockchainData()
-  }, [loading])
+  })
 
   return (
     loading ? 'loading...' : (
@@ -91,7 +94,7 @@ const App = () => {
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <a
             className="navbar-brand col-sm-3 col-md-2 mr-0"
-            href="http://www.dappuniversity.com/bootcamp"
+            href='\'
             target="_blank"
             rel="noopener noreferrer"
           >
